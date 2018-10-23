@@ -1,0 +1,28 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<header>
+    <table>
+        <tr>
+            <td><a class="" href="/">Strona główna</a></td>
+            <td><a href="/user/list"> Użytkownicy</a></td>
+
+            <td><a href="/user/account">Twoje Konto</a></td>
+
+            <td><a href="/user/list">Wszystkie konta</a></td>
+
+            <c:if test="${login == true}">
+                <td><a href="/logout" class="waves-effect waves-light btn">Wyloguj</a></td>
+            </c:if>
+
+
+
+
+
+
+        </tr>
+    </table>
+    <br>
+</header>
