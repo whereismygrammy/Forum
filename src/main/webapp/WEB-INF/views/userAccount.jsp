@@ -10,12 +10,44 @@
 <%@ include file="/WEB-INF/views/footer_header/header.jspf" %>
 
 
-${loggedInUser.nick}
-${loggedInUser.password}
-${loggedInUser.email}
-${loggedInUser.created}
-${loggedInUser.lastLogin}
 
+<div class="row">
+    <div class="col s4 offset-s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Twoje Dane</span>
+                <p>
+                    <b>Login</b>: ${loggedInUser.nick}<br>
+                    <b>Email</b>: ${loggedInUser.email}<br>
+                    <b>Konto od</b>: ${loggedInUser.created}<br>
+                    <b>Podpis</b>: ${loggedInUser.signature}<br>
+
+                </p>
+            </div>
+            <div class="card-action">
+                <a href="#">Dodaj opis</a>
+                <a href="#">Twoje tematy</a>
+                <a href="#comment">Twoje komentarze</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="collection with-header">
+    <li class="collection-header"><h4>Twoje tematy</h4></li>
+    <a href="#!" class="collection-item">Alvin</a>
+    <a href="#!" class="collection-item active">Alvin</a>
+    <a href="#!" class="collection-item">Alvin</a>
+    <a href="#!" class="collection-item">Alvin</a>
+</ul>
+
+<ul class="collection with-header">
+    <li class="collection-header"><h4>Twoje komentarze</h4></li>
+    <li class="collection-item">Alvin</li>
+    <li class="collection-item">Alvin</li>
+    <li class="collection-item">Alvin</li>
+    <li class="collection-item">Alvin</li>
+</ul>
 
 <%@ include file="/WEB-INF/views/footer_header/footer.jspf" %>
 </body>
