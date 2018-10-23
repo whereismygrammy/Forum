@@ -31,7 +31,7 @@
 
 </table>
 
-TO JEST ID USERA --->>> ${userId}
+TO JEST ID USERA --->>> ${loggedInUser.id}
 
 <%@ include file="/WEB-INF/views/footer_header/footer.jspf" %>
 </body>

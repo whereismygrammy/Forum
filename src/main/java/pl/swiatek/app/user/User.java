@@ -8,7 +8,6 @@ import pl.swiatek.app.topic.Topic;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -40,7 +39,6 @@ public class User {
     private String signature;
 
 
-
     private LocalDate created;
 
     private LocalDate lastLogin;
@@ -49,7 +47,6 @@ public class User {
     protected void onCreate() {
         setCreated(LocalDate.now());
     }
-
 
 
     ///////////////////
@@ -133,5 +130,21 @@ public class User {
 
     public void setLastLogin(LocalDate lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nick='" + nick + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", commentList=" + commentList +
+                ", topicList=" + topicList +
+                ", likes=" + likes +
+                ", signature='" + signature + '\'' +
+                ", created=" + created +
+                ", lastLogin=" + lastLogin +
+                '}';
     }
 }

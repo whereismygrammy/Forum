@@ -14,7 +14,7 @@
             <td><a href="/user/account">Twoje Konto</a></td>
 
             <td><a href="/user/list">Wszystkie konta</a></td>
-            
+
 
             <c:if test="${login == true}">
                 <td><a href="/logout" class="waves-effect waves-light btn">Wyloguj</a></td>

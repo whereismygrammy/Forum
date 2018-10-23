@@ -3,10 +3,15 @@ package pl.swiatek.app.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import pl.swiatek.app.comment.Comment;
+import pl.swiatek.app.comment.CommentRepository;
+import pl.swiatek.app.topic.Topic;
+import pl.swiatek.app.topic.TopicRepository;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -15,6 +20,12 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TopicRepository topicRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
     @ModelAttribute("users")
     public List<User> getUsers() {
@@ -28,8 +39,13 @@ public class UserController {
 
     @GetMapping("/account")
     public String account(@SessionAttribute User loggedInUser, Model model) {
+        long id = loggedInUser.getId();
 
+        List<Topic> topics = topicRepository.findAllByUserId(id);
+        model.addAttribute("topics", topics);
 
+        List<Comment> comments = commentRepository.findAllByUserId(id);
+        model.addAttribute("comments", comments);
 
         return "userAccount";
     }

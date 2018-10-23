@@ -5,6 +5,7 @@ import pl.swiatek.app.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Comment {
@@ -20,9 +21,9 @@ public class Comment {
     @ManyToOne
     private Topic topic;
 
-    private LocalDate created;
+    private LocalDateTime created;
 
-    private LocalDate updated;
+    private LocalDateTime updated;
 
     public long getId() {
         return id;
@@ -56,19 +57,19 @@ public class Comment {
         this.topic = topic;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 
-    public void setUpdated(LocalDate updated) {
+    public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
 
