@@ -10,26 +10,37 @@
 <%@ include file="/WEB-INF/views/footer_header/header.jspf" %>
 
 
+<div class="row">
+    <div class="col s8 offset-s2">
+        <div class="card-panel grey lighten-5 z-depth-1">
 
-<table>
-    <tr>
-        <th>Temat</th>
-        <th>Ostatnia aktualizacja</th>
-        <th>Przez</th>
-        <th>Przejdz do tematu</th>
+            <table>
+                <tr>
+                    <th>Temat</th>
+                    <th>Ostatnia aktualizacja</th>
+                    <th>Przez</th>
+                    <th>Przejdz do tematu</th>
 
 
-    </tr>
-    <c:forEach items="${topics}" var="topic">
-        <tr>
-            <td>${topic.name}</td>
-            <td>${topic.updated}</td>
-            <td>Dorobić</td>
-            <td><a href="/topic/${topic.id}">Przejdź</a></td>
-        </tr>
-    </c:forEach>
+                </tr>
+                <c:forEach items="${topics}" var="topic">
+                    <tr>
+                        <td>${topic.name}</td>
+                        <td>${topic.updated}</td>
+                        <td>Dorobić</td>
+                        <td><a href="/topic/${topic.id}">Przejdź</a></td>
+                    </tr>
+                </c:forEach>
 
-</table>
+            </table>
+        </div>
+    </div>
+
+    <div class="col s1 offset-s10">
+        <a href="/topic/addTopic/" class="btn-floating btn-large waves-light pulse"><i class="material-icons">add</i></a>
+    </div>
+
+</div>
 
 TO JEST ID USERA --->>> ${loggedInUser.id}
 

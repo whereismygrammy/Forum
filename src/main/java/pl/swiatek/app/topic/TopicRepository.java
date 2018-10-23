@@ -16,6 +16,7 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
     @Query("select t from Topic t where t.user.id = :id order by t.updated desc")
     List<Topic> findAllByUserId(@Param("id") long id);
 
+
 //    @Query("select t from Topic t where t.title like :param% order by t.created desc")
 //    List<Topic> findAllStartedWithParam(@Param("param") String param);
 

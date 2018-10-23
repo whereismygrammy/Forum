@@ -5,6 +5,7 @@ import pl.swiatek.app.comment.Comment;
 import pl.swiatek.app.user.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import java.time.LocalDateTime;
 import java.util.List;
 

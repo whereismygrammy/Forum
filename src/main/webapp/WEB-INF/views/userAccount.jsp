@@ -39,59 +39,70 @@
 
 </div>
 
-<h5>Twoje tematy</h5>
-<table class="highlight">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Nazwa</th>
-        <th>Ostatni komentarz</th>
-        <th></th>
-    </tr>
-    </thead>
+<div class="row">
+    <div class="col s8 offset-s2">
+        <div class="card-panel grey lighten-5 z-depth-1">
 
-    <tbody>
+            <h5>Twoje tematy</h5>
+            <table class="highlight">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nazwa</th>
+                    <th>Ostatni komentarz</th>
+                    <th></th>
+                </tr>
+                </thead>
 
-    <c:forEach items="${topics}" var="topic">
-        <tr>
-            <td>${topic.id}</td>
-            <td>${topic.name}</td>
-            <td>${topic.updated}</td>
-            <td><a href="${topic.id}">Przejdz do tematu</a></td>
+                <tbody>
 
-        </tr>
-    </c:forEach>
+                <c:forEach items="${topics}" var="topic">
+                    <tr>
+                        <td>${topic.id}</td>
+                        <td>${topic.name}</td>
+                        <td>${topic.updated}</td>
+                        <td><a href="${topic.id}">Przejdz do tematu</a></td>
 
-    </tbody>
-</table>
+                    </tr>
+                </c:forEach>
 
+                </tbody>
+            </table>
 
-<h5>Twoje komentarze</h5>
-<table class="highlight">
-    <thead>
-    <tr>
-        <th>Temat</th>
-        <th>Treść komentarza</th>
-        <th>Dodano</th>
-        <th>Ostatnia edycja tematu</th>
-        <th></th>
-    </tr>
-    </thead>
+        </div>
+    </div>
 
-    <tbody>
+    <div class="col s8 offset-s2">
+        <div class="card-panel grey lighten-5 z-depth-1">
+            <h5>Twoje komentarze</h5>
+            <table class="highlight">
+                <thead>
+                <tr>
+                    <th>Temat</th>
+                    <th>Treść komentarza</th>
+                    <th>Dodano</th>
+                    <th>Ostatnia edycja tematu</th>
+                    <th></th>
+                </tr>
+                </thead>
 
-    <c:forEach items="${comments}" var="comment">
-        <tr>
-            <td>${comment.topic.name}</td>
-            <td>${comment.content}</td>
-            <td>${comment.updated}</td>
-            <td>${comment.topic.updated}</td>
-            <td><a href="${comment.id}">Przejdz do tematu</a></td>
-        </tr>
-    </c:forEach>
+                <tbody>
 
-    </tbody>
-</table>
+                <c:forEach items="${comments}" var="comment">
+                    <tr>
+                        <td>${comment.topic.name}</td>
+                        <td>${comment.content}</td>
+                        <td>${comment.updated}</td>
+                        <td>${comment.topic.updated}</td>
+                        <td><a href="${comment.id}">Przejdz do tematu</a></td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <%@ include file="/WEB-INF/views/footer_header/footer.jspf" %>
 </body>

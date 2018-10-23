@@ -1,10 +1,10 @@
 package pl.swiatek.app.comment;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import pl.swiatek.app.topic.Topic;
 import pl.swiatek.app.user.User;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,6 +13,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotEmpty
     private String content;
 
     @ManyToOne
@@ -78,8 +79,8 @@ public class Comment {
     public String toString() {
         return "Comment{" +
                 "content='" + content + '\'' +
-                ", user=" + user +
-                ", topic=" + topic +
+                ", user=" + user.getNick() +
+                ", topic=" + topic.getName() +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';

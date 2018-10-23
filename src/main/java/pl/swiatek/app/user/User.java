@@ -139,7 +139,6 @@ public class User {
                 ", nick='" + nick + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", commentList=" + commentList +
                 ", topicList=" + topicList +
                 ", likes=" + likes +
                 ", signature='" + signature + '\'' +

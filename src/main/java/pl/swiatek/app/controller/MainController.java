@@ -23,7 +23,6 @@ public class MainController {
         return topicRepository.findAllByOrderByUpdated();
     }
 
-
     @GetMapping("/")
     public String home(){
         return "home";

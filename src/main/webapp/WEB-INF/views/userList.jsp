@@ -9,35 +9,39 @@
 <body>
 <%@ include file="/WEB-INF/views/footer_header/header.jspf" %>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Nick</th>
-        <th>Email</th>
-        <th>Utworzony</th>
-        <th>Ostatnie logowanie</th>
-        <th>Tematy</th>
-        <th>Haslo do wywalenia</th>
 
-    </tr>
-    <c:forEach items="${users}" var="user">
+<div class="row">
+    <div class="col s8 offset-s2">
+        <div class="card-panel grey lighten-5 z-depth-1">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Nick</th>
+                    <th>Email</th>
+                    <th>Utworzony</th>
+                    <th>Ostatnie logowanie</th>
+                    <th>Tematy</th>
+                    <th>Haslo do wywalenia</th>
 
-        <tr>
-            <td>${user.id}</td>
-            <td>${user.nick}</td>
-            <td>${user.email}</td>
-            <td>${user.created}</td>
-            <td>${user.lastLogin}</td>
-            <td>${fn:length(user.topicList)}</td>
-            <td>${user.password}</td>
-        </tr>
+                </tr>
+                <c:forEach items="${users}" var="user">
 
-    </c:forEach>
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.nick}</td>
+                        <td>${user.email}</td>
+                        <td>${user.created}</td>
+                        <td>${user.lastLogin}</td>
+                        <td>${fn:length(user.topicList)}</td>
+                        <td>${user.password}</td>
+                    </tr>
 
-</table>
+                </c:forEach>
 
-<a href="/">Dodaj komentarz</a>
-<a href="/">Powrót</a>
+            </table>
+        </div>
+    </div>
+</div>
 
 <%@ include file="/WEB-INF/views/footer_header/footer.jspf" %>
 
