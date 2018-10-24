@@ -48,13 +48,18 @@ public class TopicController {
     }
 
     @PostMapping("/addTopic")
-    public String addTopic(@ModelAttribute Topic topic, @SessionAttribute User loggedInUser) {
+    public String addTopic(@Valid @ModelAttribute Topic topic, BindingResult result, @SessionAttribute User loggedInUser) {
+        if (result.hasErrors()) {
+            return "/topic/topicAdd";
+
+        }
         topic.setCreated(LocalDateTime.now());
         topic.setUpdated(LocalDateTime.now());
         topic.setUser(loggedInUser);
         topicRepository.save(topic);
         return "redirect:/";
     }
+
 
     @GetMapping("/delTopic/{id}")
     public String delTopic(Model model, @PathVariable long id) {
@@ -76,22 +81,24 @@ public class TopicController {
 
 
     @GetMapping("/edit/{topicId}/")
-    public String editComment(@PathVariable long topicId, Model model) {
+    public String editTopic(@PathVariable long topicId, Model model) {
         Topic topic = topicRepository.findOne(topicId);
         model.addAttribute("topic", topic);
         return "/topic/topicAdd";
     }
 
-    //TO DO
-//    @PostMapping("/edit/{topicId}/")
-//    public String editComment(@Valid @ModelAttribute Topic topic, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "/topic/topicAdd";
-//        }
-//
-//        topicRepository.save(topic);
-//        return "redirect:/";
-//    }
+    @PostMapping("/edit/{topicId}/")
+    public String editTopic(@Valid @ModelAttribute Topic topic, BindingResult result, @PathVariable long topicId) {
+        if (result.hasErrors()) {
+            return "/topic/topicAdd";
+        }
+        Topic oldTopic = topicRepository.findOne(topicId);
+        oldTopic.setContent(topic.getContent());
+        oldTopic.setName(topic.getName());
+        oldTopic.setUpdated(LocalDateTime.now());
+        topicRepository.save(oldTopic);
+        return "redirect:/topic/" + topicId;
+    }
 
 
     @GetMapping("/{id}/addComment/")

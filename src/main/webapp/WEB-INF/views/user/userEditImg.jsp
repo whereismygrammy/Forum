@@ -15,8 +15,8 @@
 
             <form:form method="post" modelAttribute="user">
 
-                Twój podpis : <br><form:input type="text" path="signature"/><br>
-                <form:errors path="signature"/><br>
+                Twój podpis : <br><form:input type="text" path="imgUrl"/><br>
+                <form:errors path="imgUrl"/><br>
 
                 <center>
                     <input type="submit" class="waves-effect waves-light btn" value="Zapisz">

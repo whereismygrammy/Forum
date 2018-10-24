@@ -20,7 +20,6 @@
                     <th>Email</th>
                     <th>Utworzony</th>
                     <th>Ostatnie logowanie</th>
-                    <th>Haslo do wywalenia</th>
 
                 </tr>
                 <c:forEach items="${users}" var="user">
@@ -31,7 +30,6 @@
                         <td>${user.email}</td>
                         <td>${user.created}</td>
                         <td>${user.lastLogin}</td>
-                        <td>${user.password}</td>
                     </tr>
 
                 </c:forEach>

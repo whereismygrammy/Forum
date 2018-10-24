@@ -7,6 +7,7 @@ import pl.swiatek.app.topic.Topic;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -36,8 +37,11 @@ public class User {
 
     private int likes;
 
+    @Size(max = 250)
     private String signature;
 
+    @Size(max = 250)
+    private String imgUrl = "https://v-play.net/doc/images/used-in-examples/examples/gamenetwork/GameNetworkTest/android/vendor/facebook/res/drawable/com_facebook_profile_picture_blank_square.png";
 
     private LocalDate created;
 
@@ -114,6 +118,14 @@ public class User {
 
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public LocalDate getCreated() {

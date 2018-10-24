@@ -14,106 +14,118 @@
 <div class="row">
     <div class="col s8 offset-s2">
         <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="col s2">
+                <br>
+                <center><img height="80" width="80" class="circle responsive-img" src="${topic.user.imgUrl}"></center>
+                <br>
+                <span style="font-size: smaller;">Autor: <b>${topic.user.nick}</b></span><br>
+                <span style="font-size: smaller;">Dołączył: ${topic.user.created}</span><br>
+                <span style="font-size: smaller;">Online: ${topic.user.lastLogin}</span><br>
 
-            <h5>${topic.name}</h5>
-            <br>
-            <blockquote>${topic.content}<br>
 
-                <span style="color: darkgray;">---</span><br>
-                <span style="color: darkgray;">${topic.user.signature}</span><br>
+                <c:if test="${loggedInUser.id == topic.user.id}">
 
-            </blockquote>
-            <table>
-                <tr>
-                    <td><span style="font-size:  xx-small;">Stworzony: ${topic.created}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span style="font-size: smaller;">Autor: ${topic.user.nick}</span>
-                    </td>
-                </tr>
-            </table>
+                    <center><br><a class="btn tooltipped" data-position="bottom" data-tooltip="Edytuj"
+                                   href="/topic/edit/${topic.id}/"><i
+                            class="material-icons">edit</i></a>
+
+                        <a class="btn tooltipped red lighten-2" data-position="bottom"
+                           data-tooltip="Uwaga jeśli usuniesz temat znikną również wszystkie posty!"
+                           href="/topic/delTopic/${topic.id}"><i
+                                class="material-icons">delete</i></a></center>
+                </c:if>
+
+            </div>
+
+            <div class="col s10">
+
+                <h5>${topic.name}</h5>
+                <br>
+
+
+                <blockquote><span style="font-size:  smaller;">${topic.created}</span><br><br>
+                    ${topic.content}<br>
+
+                    <span style="color: darkgray;">---</span><br>
+                    <span style="color: darkgray;">${topic.user.signature}</span><br>
+                </blockquote>
+            </div>
+
+
+            <table></table>
+
         </div>
     </div>
 
 
-    <c:forEach items="${comments}" var="comment">
+    <%--////// TOPIC END--%>
 
+    <c:forEach items="${comments}" var="comment">
         <div class="col s8 offset-s2">
             <div class="card-panel grey lighten-5 z-depth-1">
-
-                <c:if test="${loggedInUser.id == comment.user.id}">
-                    <div class="row">
-                        <div class="col s11">
-                            <blockquote>
-                                    ${comment.content}<br>
-                                <span style="color: darkgray;">---</span><br>
-                                <span style="color: darkgray;">${comment.user.signature}</span><br>
-                            </blockquote>
-                            <table>
-                                <tr>
-                                    <td><span style="font-size:  xx-small;">Dodano: ${comment.created}</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span style="font-size: smaller;">To twój post</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col s1">
-                            <div style="height: 3%"></div>
-                            <div>
-                                <a href="#" class="btn-floating btn-large waves-light"><i
-                                        class="material-icons">edit</i></a>
-                            </div>
-                            <div style="height: 2%"></div>
-                            <div>
-                                <a href="/topic/${topic.id}/delete/${comment.id}/"
-                                   class="btn-floating btn-large waves-light"><i
-                                        class="material-icons">delete</i></a>
-                            </div>
+                <div class="col s2">
+                    <br>
+                    <center><img height="80" width="80" class="circle responsive-img" src="${comment.user.imgUrl}">
+                    </center>
+                    <br>
+                    <span style="font-size: smaller;">Autor: <b>${comment.user.nick}</b></span><br>
+                    <span style="font-size: smaller;">Dołączył: ${comment.user.created}</span><br>
+                    <span style="font-size: smaller;">Online: ${comment.user.lastLogin}</span><br>
 
 
-                        </div>
+                    <c:if test="${loggedInUser.id == comment.user.id}">
 
-                    </div>
+                        <center><br><a class="btn tooltipped " data-position="bottom" data-tooltip="Edytuj"
+                                       href="/topic/${topic.id}/edit/${comment.id}//">
+                            <i class="material-icons">edit</i></a>
+
+                            <a class="btn tooltipped red lighten-2" data-position="bottom" data-tooltip="Usuń post"
+                               href="/topic/${topic.id}/delete/${comment.id}/" class="waves-effect waves-light btn"><i class="material-icons">delete</i></a>
+                        </center>
+                    </c:if>
+
+                </div>
+
+                <div class="col s10">
 
 
-                </c:if>
-
-
-                <c:if test="${loggedInUser.id != comment.user.id}">
-                    <blockquote>
+                    <blockquote><span style="font-size:  smaller;">${comment.created}</span><br><br>
                             ${comment.content}<br>
+
                         <span style="color: darkgray;">---</span><br>
-                        <span style="color: darkgray;">${comment.user.signature}</span><br></blockquote>
-                    <table>
-                        <tr>
-                            <td width="30%"><span style="font-size: smaller;">${comment.user.nick}</span>
-                            </td>
-                            <td><span style="font-size:  xx-small;">Dodano: ${comment.created}</span>
-                            </td>
+                        <span style="color: darkgray;">${comment.user.signature}</span><br>
+                    </blockquote>
+                </div>
 
 
-                        </tr>
-
-                    </table>
-                </c:if>
-
+                <table></table>
 
             </div>
         </div>
-
     </c:forEach>
 
 
     <div class="col s1 offset-s10">
-        <a href="/topic/${topic.id}/addComment/" class="btn-floating btn-large waves-light pulse"><i
+        <a href="/topic/${topic.id}/addComment/" data-position="top" data-tooltip="Dodaj post"
+           class="btn-floating btn-large btn tooltipped waves-light pulse"><i
                 class="material-icons">add</i></a>
     </div>
 
 </div>
+
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+
+
+<script>
+    M.AutoInit();
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems, options);
+    });
+</script>
+
 
 <%@ include file="/WEB-INF/views/footer_header/footer.jspf" %>
 </body>

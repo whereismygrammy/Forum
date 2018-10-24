@@ -62,23 +62,20 @@ public class UserController {
         return "redirect:/user/account";
     }
 
+    @GetMapping("/editImg")
+    public String editUserImg(Model model, @SessionAttribute User loggedInUser) {
+        model.addAttribute("user", loggedInUser);
+        return "user/userEditImg";
+    }
+
+    @PostMapping("/editImg")
+    public String editUserImg(@ModelAttribute User user, @SessionAttribute User loggedInUser) {
+        loggedInUser.setImgUrl(user.getImgUrl());
+        userRepository.save(loggedInUser);
+        return "redirect:/user/account";
+    }
 
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //    @GetMapping("/add")
 //    public String addUser(Model model) {
 //        model.addAttribute("user", new User());

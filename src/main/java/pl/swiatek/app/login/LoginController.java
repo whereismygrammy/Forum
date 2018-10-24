@@ -42,6 +42,7 @@ public class LoginController {
         }
 
         user.setLastLogin(LocalDate.now());
+        userRepository.save(user);
         session.setAttribute("login", true);
         session.setAttribute("loggedInUser", user);
         return "redirect:/";
@@ -59,6 +60,7 @@ public class LoginController {
         if (result.hasErrors()) {
             return "userAdd";
         }
+        user.setLastLogin(LocalDate.now());
         userService.save(user);
         session.setAttribute("login", true);
         session.setAttribute("loggedInUser", user);
@@ -66,7 +68,7 @@ public class LoginController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
     }

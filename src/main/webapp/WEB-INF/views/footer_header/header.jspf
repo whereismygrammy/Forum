@@ -9,14 +9,16 @@
     <table>
         <tr>
             <td><a class="" href="/">Forum</a></td>
-            <td><a href="/user/list"> Użytkownicy</a></td>
+            <td><a href="/stats">Statystyki</a></td>
+            <td><a href="/user/list">Użytkownicy</a></td>
 
             <td><a href="/user/account">Twoje Konto</a></td>
 
 
             <c:if test="${login == true}">
-                <td><a href="/logout" class="waves-effect waves-light btn">Wyloguj</a></td>
+                <td class="right-align"><a href="/logout" class="waves-effect waves-light btn">Wyloguj</a></td>
             </c:if>
+            <td></td>
 
 
         </tr>

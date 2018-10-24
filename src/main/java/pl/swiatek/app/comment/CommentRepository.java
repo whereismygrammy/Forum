@@ -20,4 +20,13 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     void deleteAllByTopicId(Long id);
 
+    @Query(value = "select user_id from Comment group by user_id order by count(all user_id) desc limit 1;", nativeQuery = true)
+    long usersIdWithMostComents();
+
+    @Query(value = "select count(all user_id) AS COUNT from Comment group by user_id order by COUNT desc limit 1;", nativeQuery = true)
+    int maxComment();
+
+//    @Query(value = "select user_id as ID, count(all user_id) AS COUNT from Comment group by user_id order by COUNT desc limit 1;", nativeQuery = true)
+//    List<long> usersIdWithMostComents2();
 }
+
