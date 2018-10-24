@@ -5,6 +5,7 @@ import pl.swiatek.app.topic.Topic;
 import pl.swiatek.app.user.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,6 +15,7 @@ public class Comment {
     private long id;
 
     @NotEmpty
+    @Size(max = 250)
     private String content;
 
     @ManyToOne
@@ -73,7 +75,6 @@ public class Comment {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
-
 
     @Override
     public String toString() {

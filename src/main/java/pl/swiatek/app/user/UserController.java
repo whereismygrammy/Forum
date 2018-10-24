@@ -3,15 +3,14 @@ package pl.swiatek.app.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import pl.swiatek.app.comment.Comment;
 import pl.swiatek.app.comment.CommentRepository;
 import pl.swiatek.app.topic.Topic;
 import pl.swiatek.app.topic.TopicRepository;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -47,8 +46,22 @@ public class UserController {
         List<Comment> comments = commentRepository.findAllByUserId(id);
         model.addAttribute("comments", comments);
 
-        return "userAccount";
+        return "/user/userAccount";
     }
+
+    @GetMapping("/edit")
+    public String editUser(Model model, @SessionAttribute User loggedInUser) {
+        model.addAttribute("user", loggedInUser);
+        return "user/userEdit";
+    }
+
+    @PostMapping("/edit")
+    public String editUser(@ModelAttribute User user, @SessionAttribute User loggedInUser) {
+        loggedInUser.setSignature(user.getSignature());
+        userRepository.save(loggedInUser);
+        return "redirect:/user/account";
+    }
+
 
 
 //
@@ -89,19 +102,6 @@ public class UserController {
 //        return "redirect:/user/all";
 //    }
 //
-//    @GetMapping("/edit/{id}")
-//    public String editUser(Model model, @PathVariable long id) {
-//        model.addAttribute("user", userRepository.findOne(id));
-//        return "addUser";
-//    }
-//
-//    @PostMapping("/edit/{id}")
-//    public String editUser(@Valid @ModelAttribute User user, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "addUser";
-//        }
-//        userRepository.save(user);
-//        return "redirect:/user/all";
-//    }
+
 
 }

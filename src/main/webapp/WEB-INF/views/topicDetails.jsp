@@ -17,7 +17,12 @@
 
             <h5>${topic.name}</h5>
             <br>
-            <blockquote>${topic.content}</blockquote>
+            <blockquote>${topic.content}
+
+                <br><span style="color: darkgray">---</span>
+                <br><span style="color: darkgray">${topic.user.signature}</span>
+
+            </blockquote>
             <table>
                 <tr>
                     <td><span style="font-size:  xx-small;">Stworzony: ${topic.created}</span>
@@ -42,6 +47,11 @@
                         <div class="col s11">
                             <blockquote>
                                     ${comment.content}
+
+
+                                <br><span style="color: darkgray">---</span>
+                                <br><span style="color: darkgray">${topic.user.signature}</span>
+
                             </blockquote>
                             <table>
                                 <tr>
@@ -57,12 +67,14 @@
                         <div class="col s1">
                             <div style="height: 3%"></div>
                             <div>
-                                <a href="#" class="btn-floating btn-large waves-light"><i
+                                <a href="/topic/${topic.id}/edit/${comment.id}/"
+                                   class="btn-floating btn-large waves-light"><i
                                         class="material-icons">edit</i></a>
                             </div>
                             <div style="height: 2%"></div>
                             <div>
-                                <a href="/topic/${topic.id}/${comment.id}/" class="btn-floating btn-large waves-light"><i
+                                <a href="/topic/${topic.id}/delete/${comment.id}/"
+                                   class="btn-floating btn-large waves-light"><i
                                         class="material-icons">delete</i></a>
                             </div>
 
@@ -103,38 +115,6 @@
         <a href="/topic/${topic.id}/addComment/" class="btn-floating btn-large waves-light pulse"><i
                 class="material-icons">add</i></a>
     </div>
-
-    <%--<div id="addComment" class="modal">--%>
-    <%--<div class="modal-content">--%>
-
-    <%--<form:form method="post" target="/${topic.id}/addComment/" modelAttribute="comment">--%>
-
-    <%--Twój komentarz : <br><form:input type="text" path="content"/><br>--%>
-    <%--<form:errors path="content"/><br>--%>
-
-    <%--<input type="submit" class="waves-effect waves-light btn" value="Skomentuj">--%>
-
-    <%--</form:form>--%>
-
-
-    <%--</div>--%>
-    <%--<div class="modal-footer">--%>
-    <%--<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-
-
-    <%--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>--%>
-    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>--%>
-    <%--<script>--%>
-    <%--M.AutoInit();--%>
-
-    <%--document.addEventListener('DOMContentLoaded', function () {--%>
-    <%--var elems = document.querySelectorAll('.modal');--%>
-    <%--var instances = M.Modal.init(elems, options);--%>
-    <%--});--%>
-
-    <%--</script>--%>
 
 </div>
 

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <html>
@@ -11,7 +13,6 @@
 
 
 <div class="row">
-
     <div class="col s4 offset-s4">
         <div class="card blue-grey darken-1">
             <div class="card-content white-text">
@@ -21,15 +22,15 @@
                     <b>Email</b>: ${loggedInUser.email}<br>
                     <b>Id</b>: ${loggedInUser.id}<br>
                     <b>Konto od</b>: ${loggedInUser.created}<br>
-                    <b>Twoje tematy</b>: 2<br>
-                    <b>Twoje komentarze</b>: 2<br>
+                    <b>Twoje tematy</b>: ${fn:length(topics)}<br>
+                    <b>Twoje komentarze</b>: ${fn:length(comments)}<br>
                     <b>Uzyskane lajki</b>: 2<br>
                     <b>Podpis</b>: ${loggedInUser.signature}<br>
 
                 </p>
             </div>
             <div class="card-action">
-                <a href="#">Edytuj dane</a>
+                <a href="/user/edit">Zmień podpis</a>
                 <a href="#topics">Twoje tematy</a>
                 <a href="#comments">Twoje komentarze</a>
             </div>

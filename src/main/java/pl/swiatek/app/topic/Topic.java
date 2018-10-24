@@ -5,7 +5,7 @@ import pl.swiatek.app.comment.Comment;
 import pl.swiatek.app.user.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,8 +17,10 @@ public class Topic {
     private long id;
 
     @NotEmpty
+    @Size(max = 40)
     private String name;
 
+    @Size(max = 250)
     private String content;
 
     private LocalDateTime created;

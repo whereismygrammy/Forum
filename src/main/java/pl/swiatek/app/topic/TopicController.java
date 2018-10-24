@@ -36,9 +36,6 @@ public class TopicController {
         List<Comment> comments = commentRepository.findAllByTopicId(id);
         model.addAttribute("comments", comments);
 
-        Comment comment = new Comment();
-        model.addAttribute("comment", comment);
-
         return "topicDetails";
     }
 
@@ -56,7 +53,12 @@ public class TopicController {
         if (result.hasErrors()) {
             return "commentAdd";
         }
-        comment.setTopic(topicRepository.findOne(topicId));
+
+        Topic topic = topicRepository.findOne(topicId);
+        topic.setUpdated(LocalDateTime.now());
+        topicRepository.save(topic);
+
+        comment.setTopic(topic);
         comment.setCreated(LocalDateTime.now());
         comment.setUser(loggedInUser);
         commentRepository.save(comment);
@@ -64,22 +66,34 @@ public class TopicController {
     }
 
 
-
-    /// TODO
-    @GetMapping("/{topicId}/{commentId}/")
+    @GetMapping("/{topicId}/delete/{commentId}/")
     public String delComment(@PathVariable long commentId, @PathVariable long topicId) {
-        Comment one = commentRepository.getOne(commentId);
-
-//        Topic topic = topicRepository.findOneByCommentId(commentId);
-//        for(Comment c : topic.getCommentList()){
-//            if (c.getId() == commentId){
-//                System.out.println(c.getContent());
-//                c.setTopic(null);
-//            }
-//        }
-
-        commentRepository.save(one);
         commentRepository.delete(commentId);
+        return "redirect:/topic/" + topicId;
+    }
+
+    @GetMapping("/{topicId}/edit/{commentId}/")
+    public String editComment(@PathVariable long commentId, @PathVariable long topicId, Model model) {
+        Comment comment = commentRepository.findOne(commentId);
+        model.addAttribute("comment", comment);
+        return "commentAdd";
+    }
+
+    @PostMapping("/{topicId}/edit/{commentId}/")
+    public String editComment(@Valid @ModelAttribute Comment comment, BindingResult result, @PathVariable long topicId, @PathVariable long commentId) {
+        if (result.hasErrors()) {
+            return "commentAdd";
+        }
+
+        Topic topic = topicRepository.findOne(topicId);
+        topic.setUpdated(LocalDateTime.now());
+        topicRepository.save(topic);
+
+        Comment oldComment = commentRepository.findOne(commentId);
+        oldComment.setContent(comment.getContent());
+        oldComment.setUpdated(LocalDateTime.now());
+
+        commentRepository.save(oldComment);
         return "redirect:/topic/" + topicId;
     }
 }
