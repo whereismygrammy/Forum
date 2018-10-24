@@ -1,4 +1,4 @@
-package pl.swiatek.app.controller;
+package pl.swiatek.app.login;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

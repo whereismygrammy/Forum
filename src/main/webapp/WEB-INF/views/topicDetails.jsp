@@ -17,10 +17,10 @@
 
             <h5>${topic.name}</h5>
             <br>
-            <blockquote>${topic.content}
+            <blockquote>${topic.content}<br>
 
-                <br><span style="color: darkgray">---</span>
-                <br><span style="color: darkgray">${topic.user.signature}</span>
+                <span style="color: darkgray;">---</span><br>
+                <span style="color: darkgray;">${topic.user.signature}</span><br>
 
             </blockquote>
             <table>
@@ -46,12 +46,9 @@
                     <div class="row">
                         <div class="col s11">
                             <blockquote>
-                                    ${comment.content}
-
-
-                                <br><span style="color: darkgray">---</span>
-                                <br><span style="color: darkgray">${topic.user.signature}</span>
-
+                                    ${comment.content}<br>
+                                <span style="color: darkgray;">---</span><br>
+                                <span style="color: darkgray;">${comment.user.signature}</span><br>
                             </blockquote>
                             <table>
                                 <tr>
@@ -59,7 +56,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><span style="font-size: smaller;">Autor: ${comment.user.nick}</span>
+                                    <td><span style="font-size: smaller;">To twój post</span>
                                     </td>
                                 </tr>
                             </table>
@@ -67,8 +64,7 @@
                         <div class="col s1">
                             <div style="height: 3%"></div>
                             <div>
-                                <a href="/topic/${topic.id}/edit/${comment.id}/"
-                                   class="btn-floating btn-large waves-light"><i
+                                <a href="#" class="btn-floating btn-large waves-light"><i
                                         class="material-icons">edit</i></a>
                             </div>
                             <div style="height: 2%"></div>
@@ -89,16 +85,17 @@
 
                 <c:if test="${loggedInUser.id != comment.user.id}">
                     <blockquote>
-                            ${comment.content}
-                    </blockquote>
+                            ${comment.content}<br>
+                        <span style="color: darkgray;">---</span><br>
+                        <span style="color: darkgray;">${comment.user.signature}</span><br></blockquote>
                     <table>
                         <tr>
+                            <td width="30%"><span style="font-size: smaller;">${comment.user.nick}</span>
+                            </td>
                             <td><span style="font-size:  xx-small;">Dodano: ${comment.created}</span>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><span style="font-size: smaller;">Autor: ${comment.user.nick}</span>
-                            </td>
+
+
                         </tr>
 
                     </table>

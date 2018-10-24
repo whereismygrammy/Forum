@@ -20,7 +20,6 @@
                     <th>Email</th>
                     <th>Utworzony</th>
                     <th>Ostatnie logowanie</th>
-                    <th>Tematy</th>
                     <th>Haslo do wywalenia</th>
 
                 </tr>
@@ -32,7 +31,6 @@
                         <td>${user.email}</td>
                         <td>${user.created}</td>
                         <td>${user.lastLogin}</td>
-                        <td>${fn:length(user.topicList)}</td>
                         <td>${user.password}</td>
                     </tr>
 

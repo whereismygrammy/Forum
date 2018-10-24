@@ -17,4 +17,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     @Query("select c from Comment c where c.user.id = :id order by c.updated desc")
     List<Comment> findAllByUserId(@Param("id") long id);
+
+    void deleteAllByTopicId(Long id);
+
 }

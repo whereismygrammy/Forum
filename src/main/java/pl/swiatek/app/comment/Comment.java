@@ -1,5 +1,7 @@
 package pl.swiatek.app.comment;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 import pl.swiatek.app.topic.Topic;
 import pl.swiatek.app.user.User;

@@ -31,7 +31,7 @@ public class User {
     @OneToMany
     private List<Comment> commentList;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     private List<Topic> topicList;
 
     private int likes;

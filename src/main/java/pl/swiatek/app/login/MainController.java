@@ -1,4 +1,4 @@
-package pl.swiatek.app.controller;
+package pl.swiatek.app.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class MainController {
 
     @ModelAttribute("topics")
     public List<Topic> getUsers() {
-        return topicRepository.findAllByOrderByUpdated();
+        return topicRepository.findAllByOrderByUpdatedDesc();
     }
 
     @GetMapping("/")

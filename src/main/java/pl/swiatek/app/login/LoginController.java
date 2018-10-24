@@ -1,4 +1,4 @@
-package pl.swiatek.app.controller;
+package pl.swiatek.app.login;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -17,7 +17,7 @@ public class Topic {
     private long id;
 
     @NotEmpty
-    @Size(max = 40)
+    @Size(max = 60)
     private String name;
 
     @Size(max = 250)
@@ -27,7 +27,7 @@ public class Topic {
 
     private LocalDateTime updated;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> commentList;
 
     @ManyToOne

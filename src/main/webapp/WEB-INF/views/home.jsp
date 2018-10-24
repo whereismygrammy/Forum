@@ -17,18 +17,35 @@
             <table>
                 <tr>
                     <th>Temat</th>
+                    <th>Autor</th>
                     <th>Ostatnia aktualizacja</th>
-                    <th>Przez</th>
-                    <th>Przejdz do tematu</th>
+                    <th></th>
+
+                    <c:if test="${loggedInUser.id == topic.user.id}">
+                        <th></th>
+                        <th></th>
+                    </c:if>
 
 
                 </tr>
                 <c:forEach items="${topics}" var="topic">
                     <tr>
                         <td>${topic.name}</td>
+                        <td>${topic.user.nick}</td>
                         <td>${topic.updated}</td>
-                        <td>Dorobić</td>
-                        <td><a href="/topic/${topic.id}">Przejdź</a></td>
+                        <td><a href="/topic/${topic.id}" class="waves-effect waves-light btn"><i class="material-icons">arrow_forward</i></a>
+                        </td>
+
+
+                        <c:if test="${loggedInUser.id == topic.user.id}">
+                            <td><a href="/topic/edit/${topic.id}/" class="waves-effect waves-light btn"><i
+                                    class="material-icons">edit</i></a>
+                            </td>
+                            <td><a href="/topic/delTopic/${topic.id}" class="waves-effect waves-light btn"><i
+                                    class="material-icons">delete</i></a></td>
+                        </c:if>
+
+
                     </tr>
                 </c:forEach>
 
@@ -37,13 +54,10 @@
     </div>
 
     <div class="col s1 offset-s10">
-        <a href="/topic/addTopic/" class="btn-floating btn-large waves-light pulse"><i class="material-icons">add</i></a>
+        <a href="/topic/addTopic" class="btn-floating btn-large waves-light pulse"><i class="material-icons">add</i></a>
     </div>
 
 </div>
-
-TO JEST ID USERA --->>> ${loggedInUser.id}
-
 <%@ include file="/WEB-INF/views/footer_header/footer.jspf" %>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package pl.swiatek.app.topic;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,60 @@ public class TopicController {
 
         return "topicDetails";
     }
+
+    @GetMapping("/addTopic")
+    public String addTopic(Model model) {
+        Topic topic = new Topic();
+        model.addAttribute("topic", topic);
+        return "/topic/topicAdd";
+    }
+
+    @PostMapping("/addTopic")
+    public String addTopic(@ModelAttribute Topic topic, @SessionAttribute User loggedInUser) {
+        topic.setCreated(LocalDateTime.now());
+        topic.setUpdated(LocalDateTime.now());
+        topic.setUser(loggedInUser);
+        topicRepository.save(topic);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delTopic/{id}")
+    public String delTopic(Model model, @PathVariable long id) {
+
+        List<Comment> comments = commentRepository.findAllByTopicId(id);
+
+        for (Comment c : comments) {
+            commentRepository.delete(c.getId());
+        }
+
+        Topic topic = topicRepository.findOne(id);
+        topic.setUser(null);
+        topicRepository.save(topic);
+
+
+        topicRepository.delete(id);
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/edit/{topicId}/")
+    public String editComment(@PathVariable long topicId, Model model) {
+        Topic topic = topicRepository.findOne(topicId);
+        model.addAttribute("topic", topic);
+        return "/topic/topicAdd";
+    }
+
+    //TO DO
+//    @PostMapping("/edit/{topicId}/")
+//    public String editComment(@Valid @ModelAttribute Topic topic, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "/topic/topicAdd";
+//        }
+//
+//        topicRepository.save(topic);
+//        return "redirect:/";
+//    }
+
 
     @GetMapping("/{id}/addComment/")
     public String addComment(@PathVariable long id, Model model) {

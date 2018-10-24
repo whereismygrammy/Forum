@@ -10,14 +10,12 @@ import java.util.List;
 @Repository
 public interface TopicRepository extends JpaRepository<Topic, Long> {
 
-    List<Topic> findAllByOrderByUpdated();
+    List<Topic> findAllByOrderByUpdatedDesc();
 
     List<Topic> findAllByUser(long id);
 
     @Query("select t from Topic t where t.user.id = :id order by t.updated desc")
     List<Topic> findAllByUserId(@Param("id") long id);
-
-    int countAllByUserId(long id);
 
 
 }

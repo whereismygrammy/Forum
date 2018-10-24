@@ -13,16 +13,20 @@
 <div class="row">
     <div class="col s6 offset-s3">
         <div class="card-panel grey lighten-5 z-depth-1">
-            <form:form method="post" modelAttribute="comment">
+            <form:form method="post" modelAttribute="topic">
 
-                Twój komentarz : <br><form:textarea type="text" path="content" class="materialize-textarea"
-                                                    data-length="250" id="textarea2"/><br>
+                Temat : <br><form:textarea type="text" path="name"/><br>
+                <form:errors path="name"/><br>
+
+
+                Treść : <br><form:textarea type="text" path="content" class="materialize-textarea"
+                                           data-length="250" id="textarea1"/><br>
                 <form:errors path="content"/><br>
 
-                <input type="submit" class="waves-orange btn" value="Skomentuj"/>
+
+                <input type="submit" class="waves-orange btn" value="Dodaj temat"/>
 
             </form:form>
-
 
 
         </div>
@@ -37,7 +41,7 @@
 <script>
     M.AutoInit();
     $(document).ready(function () {
-        $('input#input_text, textarea#textarea2').characterCounter();
+        $('input#input_text, textarea#textarea1').characterCounter();
     });
 </script>
 
