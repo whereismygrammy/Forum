@@ -8,7 +8,8 @@
 <header>
     <table>
         <tr>
-            <td><a class="" href="/">Forum</a></td>
+            <td><a href="/">Forum</a></td>
+            <td><a href="/chat/" >Czat</a></td>
             <td><a href="/stats">Statystyki</a></td>
             <td><a href="/user/list">Użytkownicy</a></td>
 

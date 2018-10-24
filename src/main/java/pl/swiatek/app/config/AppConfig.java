@@ -25,6 +25,7 @@ import java.util.Locale;
 @EnableWebMvc
 @ComponentScan(basePackages = "pl.swiatek")
 @EnableJpaRepositories(basePackages = "pl.swiatek")
+
 @EnableTransactionManagement
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
