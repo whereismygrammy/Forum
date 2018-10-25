@@ -22,12 +22,6 @@
                     <th>Ostatnia aktualizacja</th>
                     <th></th>
 
-                    <%--<c:if test="${loggedInUser.id == topic.user.id}">--%>
-                        <%--<th></th>--%>
-                        <%--<th></th>--%>
-                    <%--</c:if>--%>
-
-
                 </tr>
                 <c:forEach items="${topics}" var="topic">
                     <tr>

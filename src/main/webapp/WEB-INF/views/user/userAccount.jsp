@@ -29,7 +29,6 @@
                             <b>Twoje tematy</b>: ${fn:length(topics)}<br>
                             <b>Twoje komentarze</b>: ${fn:length(comments)}<br>
                             <b>Podpis</b>: ${loggedInUser.signature}<br>
-
                         </p>
                     </div>
                     <div class="center-align">

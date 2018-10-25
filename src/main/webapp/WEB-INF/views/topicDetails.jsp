@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -72,11 +74,10 @@
                     <span style="font-size: smaller;">Dołączył: ${comment.user.created}</span><br>
                     <span style="font-size: smaller;">Online: ${comment.user.lastLogin}</span><br>
 
-
                     <c:if test="${loggedInUser.id == comment.user.id}">
 
                         <center><br><a class="btn tooltipped " data-position="bottom" data-tooltip="Edytuj"
-                                       href="/topic/${topic.id}/edit/${comment.id}//">
+                                       href="/commentSizetopic/${topic.id}/edit/${comment.id}//">
                             <i class="material-icons">edit</i></a>
 
                             <a class="btn tooltipped red lighten-2" data-position="bottom" data-tooltip="Usuń post"

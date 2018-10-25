@@ -1,5 +1,8 @@
 package pl.swiatek.app.user;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import pl.swiatek.app.comment.Comment;
@@ -30,6 +33,7 @@ public class User {
     private String email;
 
     @OneToMany
+    @LazyCollection(LazyCollectionOption.EXTRA)
     private List<Comment> commentList;
 
     @OneToMany
@@ -51,7 +55,6 @@ public class User {
     protected void onCreate() {
         setCreated(LocalDate.now());
     }
-
 
     ///////////////////
 
@@ -143,6 +146,7 @@ public class User {
     public void setLastLogin(LocalDate lastLogin) {
         this.lastLogin = lastLogin;
     }
+
 
     @Override
     public String toString() {
