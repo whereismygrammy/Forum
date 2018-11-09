@@ -1,3 +1,5 @@
 Online forum with all basic forum functionalities.
-Technologies:
+<br>
+Technologies:<br>
+
 Java, Spring, Hibernate, BCrypt, JSTL, HTML
