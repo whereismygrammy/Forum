@@ -77,7 +77,7 @@
                     <c:if test="${loggedInUser.id == comment.user.id}">
 
                         <center><br><a class="btn tooltipped " data-position="bottom" data-tooltip="Edytuj"
-                                       href="/commentSizetopic/${topic.id}/edit/${comment.id}//">
+                                       href="/topic/${topic.id}/edit/${comment.id}//">
                             <i class="material-icons">edit</i></a>
 
                             <a class="btn tooltipped red lighten-2" data-position="bottom" data-tooltip="Usuń post"
